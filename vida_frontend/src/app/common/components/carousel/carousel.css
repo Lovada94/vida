@@ -1,0 +1,227 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(15, 60, 40, 0.18);
+}
+
+.carousel__viewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+}
+
+.carousel__viewport:focus-visible {
+  outline: 3px solid var(--vida-green);
+  outline-offset: -3px;
+}
+
+.carousel__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.45s ease;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--vida-white);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08) 0px,
+      rgba(255, 255, 255, 0.08) 2px,
+      transparent 2px,
+      transparent 14px
+    ),
+    linear-gradient(135deg, var(--vida-green) 0%, var(--vida-green-dark) 100%);
+}
+
+.carousel__expand-hint {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(10, 20, 15, 0.5);
+  color: var(--vida-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.carousel__expand-hint svg {
+  width: 18px;
+  height: 18px;
+}
+
+.carousel__viewport:hover .carousel__expand-hint,
+.carousel__viewport:focus-visible .carousel__expand-hint {
+  opacity: 1;
+}
+
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--vida-green-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carousel__arrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.carousel__arrow:hover {
+  background: var(--vida-white);
+}
+
+.carousel__arrow--prev {
+  left: 16px;
+}
+
+.carousel__arrow--next {
+  right: 16px;
+}
+
+.carousel__dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.carousel__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel__dot--active {
+  background: var(--vida-white);
+  transform: scale(1.2);
+}
+
+/* Lightbox */
+
+.carousel-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(8, 20, 15, 0.92);
+  cursor: zoom-out;
+}
+
+.carousel-lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--vida-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carousel-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.carousel-lightbox__close svg {
+  width: 22px;
+  height: 22px;
+}
+
+.carousel-lightbox__stage {
+  position: relative;
+  width: min(1200px, 100%);
+  cursor: default;
+}
+
+.carousel-lightbox__viewport {
+  overflow: hidden;
+  border-radius: 16px;
+  aspect-ratio: 16 / 9;
+  max-height: 82vh;
+}
+
+.carousel-lightbox__track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.45s ease;
+}
+
+.carousel-lightbox__slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.carousel-lightbox__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #0c1f17;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .carousel-lightbox {
+    padding: 1rem;
+  }
+
+  .carousel__arrow {
+    width: 36px;
+    height: 36px;
+  }
+}

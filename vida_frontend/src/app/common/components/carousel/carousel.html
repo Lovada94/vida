@@ -1,0 +1,114 @@
+<div class="carousel">
+  <div
+    class="carousel__viewport"
+    role="button"
+    tabindex="0"
+    aria-label="Ampliar galería de imágenes"
+    (click)="openLightbox()"
+    (keydown.enter)="openLightbox()"
+  >
+    <div class="carousel__track" [style.transform]="'translateX(-' + (activeIndex() * 100) + '%)'">
+      @for (slide of slides(); track $index) {
+        <div class="carousel__slide">
+          @if (slide.src) {
+            <img [src]="slide.src" [alt]="slide.alt" />
+          } @else {
+            <div class="carousel__placeholder">
+              <span>{{ slide.alt }}</span>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <div class="carousel__expand-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+
+  @if (hasMultipleSlides()) {
+    <button class="carousel__arrow carousel__arrow--prev" type="button" (click)="prev()" aria-label="Imagen anterior">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button class="carousel__arrow carousel__arrow--next" type="button" (click)="next()" aria-label="Siguiente imagen">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <div class="carousel__dots">
+      @for (slide of slides(); track $index; let i = $index) {
+        <button
+          class="carousel__dot"
+          type="button"
+          [class.carousel__dot--active]="i === activeIndex()"
+          (click)="goTo(i)"
+          [attr.aria-label]="'Ir a la imagen ' + (i + 1)"
+        ></button>
+      }
+    </div>
+  }
+</div>
+
+@if (lightboxOpen()) {
+  <div class="carousel-lightbox" (click)="closeLightbox()">
+    <button class="carousel-lightbox__close" type="button" (click)="closeLightbox()" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+
+    <div class="carousel-lightbox__stage" (click)="$event.stopPropagation()">
+      <div class="carousel-lightbox__viewport">
+        <div class="carousel-lightbox__track" [style.transform]="'translateX(-' + (activeIndex() * 100) + '%)'">
+          @for (slide of slides(); track $index) {
+            <div class="carousel-lightbox__slide">
+              @if (slide.src) {
+                <img [src]="slide.src" [alt]="slide.alt" />
+              } @else {
+                <div class="carousel__placeholder">
+                  <span>{{ slide.alt }}</span>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      @if (hasMultipleSlides()) {
+        <button class="carousel__arrow carousel__arrow--prev" type="button" (click)="prev()" aria-label="Imagen anterior">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button class="carousel__arrow carousel__arrow--next" type="button" (click)="next()" aria-label="Siguiente imagen">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m9 5 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <div class="carousel__dots">
+          @for (slide of slides(); track $index; let i = $index) {
+            <button
+              class="carousel__dot"
+              type="button"
+              [class.carousel__dot--active]="i === activeIndex()"
+              (click)="goTo(i)"
+              [attr.aria-label]="'Ir a la imagen ' + (i + 1)"
+            ></button>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

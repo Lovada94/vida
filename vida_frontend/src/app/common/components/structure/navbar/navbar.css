@@ -1,0 +1,95 @@
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  box-shadow: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar--scrolled {
+  background: var(--vida-white);
+  box-shadow: 0 2px 16px rgba(15, 60, 40, 0.1);
+}
+
+.navbar__container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--vida-white);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar--scrolled .navbar__logo {
+  color: var(--vida-green-dark);
+}
+
+.navbar__logo-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.navbar__logo-text {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.navbar__profile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--vida-white);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar__profile svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navbar__profile:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.navbar--scrolled .navbar__profile {
+  border-color: var(--vida-green);
+  background: var(--vida-green-light);
+  color: var(--vida-green-dark);
+}
+
+.navbar--scrolled .navbar__profile:hover {
+  background: var(--vida-green);
+  color: var(--vida-white);
+}
+
+@media (max-width: 640px) {
+  .navbar__container {
+    padding: 0 1.25rem;
+  }
+
+  .navbar__logo-text {
+    font-size: 1.2rem;
+  }
+}

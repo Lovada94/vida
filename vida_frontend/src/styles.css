@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --vida-green: #1f9d6f;
+  --vida-green-dark: #0f6b4c;
+  --vida-green-light: #e7f7ee;
+  --vida-white: #ffffff;
+  --vida-ink: #1c2b25;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--vida-ink);
+  background: var(--vida-white);
+}

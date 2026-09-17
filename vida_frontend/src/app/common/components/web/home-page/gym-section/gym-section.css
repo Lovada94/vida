@@ -1,0 +1,70 @@
+.gym-section {
+  scroll-margin-top: 96px;
+  position: relative;
+  padding: 7rem 2rem;
+  background: var(--vida-green-light);
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+}
+
+.gym-section__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.75rem;
+}
+
+.gym-section__text {
+  max-width: 640px;
+  text-align: center;
+}
+
+.gym-section__eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--vida-green-dark);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.gym-section__title {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.6vw, 2.5rem);
+  color: var(--vida-ink);
+}
+
+.gym-section__description {
+  margin: 1.1rem auto 0;
+  color: #45564d;
+  line-height: 1.65;
+}
+
+.gym-section__cta {
+  display: inline-flex;
+  margin-top: 1.75rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  background: var(--vida-green);
+  color: var(--vida-white);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gym-section__cta:hover {
+  background: var(--vida-green-dark);
+  transform: translateY(-2px);
+}
+
+.gym-section__media {
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .gym-section {
+    padding: 5.5rem 1.25rem;
+    clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
+  }
+}

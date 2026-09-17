@@ -1,0 +1,39 @@
+<header class="navbar" [class.navbar--scrolled]="scrolled()">
+  <div class="navbar__container">
+    <a class="navbar__logo" routerLink="/" aria-label="Vida - Inicio">
+      <svg class="navbar__logo-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M12 3c1.8 3.2 5 4.3 8 4.3-.2 7-4.2 11.4-8 13.7-3.8-2.3-7.8-6.7-8-13.7 3 0 6.2-1.1 8-4.3Z"
+          fill="currentColor"
+          opacity="0.15"
+        />
+        <path
+          d="M12 20.5S5.2 16.6 5 8.1c2.6 0 5.3-1 7-3.8 1.7 2.8 4.4 3.8 7 3.8-.2 8.5-7 12.4-7 12.4Z"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9 12.5h1.6l1-2.2 1.4 4.4 1-2.2H16"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <span class="navbar__logo-text">Vida</span>
+    </a>
+
+    <button class="navbar__profile" type="button" aria-label="Acceder a mi cuenta">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6" />
+        <path
+          d="M4.8 19c.9-3.3 3.8-5 7.2-5s6.3 1.7 7.2 5"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      </svg>
+    </button>
+  </div>
+</header>
