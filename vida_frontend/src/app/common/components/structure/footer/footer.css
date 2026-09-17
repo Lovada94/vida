@@ -97,6 +97,10 @@
   color: var(--vida-white);
 }
 
+.footer__social:hover span {
+  text-decoration: underline;
+}
+
 .footer__bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }

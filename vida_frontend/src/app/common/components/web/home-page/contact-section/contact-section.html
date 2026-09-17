@@ -1,0 +1,117 @@
+<section class="contact-section" id="contacto">
+  <div class="contact-section__container">
+    <div class="contact-section__intro">
+      <p class="contact-section__eyebrow">Contacto</p>
+      <h2 class="contact-section__title">Ven a conocernos</h2>
+      <p class="contact-section__lead">
+        Escríbenos y te contactaremos lo antes posible para resolver cualquier duda.
+      </p>
+    </div>
+
+    <div class="contact-section__map-wrapper">
+      <iframe
+        class="contact-section__map"
+        title="Ubicación de Vida en Segorbe"
+        src="https://www.google.com/maps?q=C.+Esperanza,+20,+12400+Segorbe,+Castell%C3%B3n&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="submitContact()">
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="name">Nombre</label>
+          <input id="name" formControlName="name" placeholder="Tu nombre" />
+          @if (nameCtrl?.touched && nameCtrl?.errors?.['required']) {
+            <p class="error">El nombre es obligatorio</p>
+          }
+          @if (nameCtrl?.touched && nameCtrl?.errors?.['notOnlyWhiteSpace']) {
+            <p class="error">No se permiten solo espacios en blanco</p>
+          }
+        </div>
+
+        <div class="contact-form__field">
+          <label for="surnames">Apellidos</label>
+          <input id="surnames" formControlName="surnames" placeholder="Tus apellidos" />
+          @if (surnamesCtrl?.touched && surnamesCtrl?.errors?.['required']) {
+            <p class="error">Los apellidos son obligatorios</p>
+          }
+          @if (surnamesCtrl?.touched && surnamesCtrl?.errors?.['notOnlyWhiteSpace']) {
+            <p class="error">No se permiten solo espacios en blanco</p>
+          }
+        </div>
+      </div>
+
+      <div class="contact-form__row">
+        <div class="contact-form__field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" type="email" formControlName="email" placeholder="tucorreo@ejemplo.com" />
+          @if (emailCtrl?.touched && emailCtrl?.errors?.['required']) {
+            <p class="error">El correo es obligatorio</p>
+          }
+          @if (emailCtrl?.touched && emailCtrl?.errors?.['email']) {
+            <p class="error">Introduce un correo válido</p>
+          }
+        </div>
+
+        <div class="contact-form__field">
+          <label for="phone">Teléfono</label>
+          <input id="phone" type="tel" formControlName="phone" placeholder="600 000 000" />
+          @if (phoneCtrl?.touched && phoneCtrl?.errors?.['required']) {
+            <p class="error">El teléfono es obligatorio</p>
+          }
+          @if (phoneCtrl?.touched && phoneCtrl?.errors?.['notOnlyWhiteSpace']) {
+            <p class="error">No se permiten solo espacios en blanco</p>
+          }
+        </div>
+      </div>
+
+      <div class="contact-form__field">
+        <span class="contact-form__label">¿Qué servicio te interesa?</span>
+        <div class="contact-form__radios">
+          <label class="contact-form__radio">
+            <input type="radio" formControlName="interest" value="gym" />
+            <span>Centro Deportivo</span>
+          </label>
+          <label class="contact-form__radio">
+            <input type="radio" formControlName="interest" value="physio" />
+            <span>Fisioterapia</span>
+          </label>
+          <label class="contact-form__radio">
+            <input type="radio" formControlName="interest" value="both" />
+            <span>Ambos</span>
+          </label>
+        </div>
+        @if (interestCtrl?.touched && interestCtrl?.errors?.['required']) {
+          <p class="error">Selecciona una opción</p>
+        }
+      </div>
+
+      <div class="contact-form__field">
+        <label for="comment">Cuéntanos qué necesitas</label>
+        <textarea id="comment" formControlName="comment" rows="4" placeholder="Escribe tu mensaje..."></textarea>
+        @if (commentCtrl?.touched && commentCtrl?.errors?.['required']) {
+          <p class="error">El comentario es obligatorio</p>
+        }
+        @if (commentCtrl?.touched && commentCtrl?.errors?.['notOnlyWhiteSpace']) {
+          <p class="error">No se permiten solo espacios en blanco</p>
+        }
+        @if (commentCtrl?.touched && commentCtrl?.errors?.['forbiddenWord']) {
+          <p class="error">El mensaje contiene palabras no permitidas</p>
+        }
+      </div>
+
+      <button class="contact-form__submit" type="submit" [disabled]="sending()">
+        {{ sending() ? 'Enviando...' : 'Enviar mensaje' }}
+      </button>
+
+      @if (sent()) {
+        <p class="contact-form__success">¡Gracias! Hemos recibido tu mensaje y te contactaremos pronto.</p>
+      }
+      @if (sendError()) {
+        <p class="error">No se pudo enviar el mensaje. Inténtalo de nuevo más tarde.</p>
+      }
+    </form>
+  </div>
+</section>
